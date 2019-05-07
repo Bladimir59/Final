@@ -1,0 +1,6 @@
+en Netbeans 
+
+	git add 
+	git commit 
+		escribir mensaje en pantalla emergente
+	git remote---> git push
