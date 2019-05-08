@@ -1,20 +1,41 @@
 package practicafinal;
 
 import InterfacesGraficas.CrearVehiculo;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Bladimir
  */
-public class Jugador {
+public class Jugador implements Serializable{
     private String Nombre;
     private String IDE;
+    private static int id=0;
+    private int idClave;
+    
     ArrayList<Vehiculo> nuevoVehiculo=new ArrayList();
     
     CrearVehiculo entrada=new CrearVehiculo();
 
     
+    public Jugador(String Nombre, String IDE) {
+        this.Nombre = Nombre;
+        this.IDE = IDE;
+        id++;
+        idClave = id;
+    }
+
+    public int getIdClave() {
+        return idClave;
+    }
+
+    public void setIdClave(int idClave) {
+        this.idClave = idClave;
+    }
+    public void addVehiculo(Vehiculo paraAgregar){
+        nuevoVehiculo.add(paraAgregar);
+    }
     
     public void nuevos(){
         String nombre,tipo;
@@ -30,12 +51,16 @@ public class Jugador {
                 break;
         }
     }
+
+    public  int getId() {
+        return id;
+    }
+
+    public  void setId(int id) {
+        Jugador.id = id;
+    }
     
 
-    public Jugador(String Nombre, String IDE) {
-        this.Nombre = Nombre;
-        this.IDE = IDE;
-    }
 
     public String getNombre() {
         return Nombre;

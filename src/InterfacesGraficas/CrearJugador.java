@@ -1,11 +1,17 @@
 package InterfacesGraficas;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import practicafinal.Jugador;
+
 
 /**
  *
  * @author Bladimir
  */
-public class CrearJugador extends javax.swing.JFrame {
+public class CrearJugador extends javax.swing.JFrame{
 
     private String nombre;
     private String ide;
@@ -137,6 +143,21 @@ public class CrearJugador extends javax.swing.JFrame {
         
         nombre=Texto1.getText();
         ide=Texto2.getText();
+        Jugador enUso = new Jugador(nombre, ide);
+        
+        try{
+         FileOutputStream fos= new FileOutputStream(String.valueOf("Player"+File.separatorChar+enUso.getIdClave()+".player"));
+         ObjectOutputStream oos= new ObjectOutputStream(fos);
+         oos.writeObject(enUso);
+         oos.close();
+         fos.close();
+       }catch(IOException ioe){
+            System.out.println(ioe.getMessage());
+        }
+        
+        
+        
+        
         CrearVehiculo nuevo=new CrearVehiculo();
         nuevo.show();
         this.setVisible(false);

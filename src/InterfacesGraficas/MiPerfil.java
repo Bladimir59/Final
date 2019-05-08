@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package InterfacesGraficas;
-
-import practicafinal.Jugador;
 
 /**
  *
- * @author REVOLUCION
+ * @author Bladimir
  */
 public class MiPerfil extends javax.swing.JFrame {
 
@@ -18,10 +11,6 @@ public class MiPerfil extends javax.swing.JFrame {
      */
     Inicio lista_de_jugadores=new Inicio();
     public MiPerfil() {
-        initComponents();
-        lista_de_jugadores.getListaJugadores().forEach((jugador) -> {
-            jTextArea1.setText(jTextArea1.getText()+"\n"+jugador.getNombre());
-        });
         
     }
     

@@ -1,5 +1,11 @@
 package InterfacesGraficas;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
 import practicafinal.Jugador;
@@ -184,19 +190,57 @@ public class CrearVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // agrega vehiculo ala lista
-        
-        Jugador vehiculos=new Jugador("as", "das");
-        vehiculos.nuevos();
-        
-        DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
-        model.addRow(new Object[]{NombreV.getText(),Combo.getSelectedItem().toString()});
-        Nom=NombreV.getText();
-        Tip=Combo.getSelectedItem().toString();
-        cantidad++;
-        Contador.setText(" "+cantidad+" ");
-        if (cantidad>=3){
-            jDialog1.setVisible(true);
+      
+        ObjectInputStream leyendoFichero = null;
+        try {
+            // agrega vehiculo ala lista
+            
+            // Jugador vehiculos=new Jugador("as", "das");
+            //  vehiculos.nuevos();
+
+            //recuperar ultimo jugador creado para agregar los vehiculos
+            
+            File file = new File("Player");
+            int lista=file.list().length;
+            
+            leyendoFichero = new ObjectInputStream( 
+                    new FileInputStream(lista+".player") );
+            
+          Jugador recuperado = (Jugador) leyendoFichero.readObject();
+          
+            leyendoFichero.close();
+            
+            
+            
+            DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
+            model.addRow(new Object[]{NombreV.getText(),Combo.getSelectedItem().toString()});
+            Nom=NombreV.getText();
+            Tip=Combo.getSelectedItem().toString();
+            cantidad++;
+            Contador.setText(" "+cantidad+" ");
+            
+            
+            if (cantidad>=3){
+                //recuperado.addVehiculo(paraAgregar);
+                
+//                for (Object object : Tabla.getModel().get) {
+//                    
+//                }
+                jDialog1.setVisible(true);
+            }
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                leyendoFichero.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
