@@ -104,7 +104,7 @@ public class TipoDeBatalla extends javax.swing.JFrame {
         this.Dimy = Dimy;
     }
     
-    Inicio llamar=new Inicio();
+
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // ir al menu que lleva al tablero deode se juega:      
@@ -124,7 +124,6 @@ public class TipoDeBatalla extends javax.swing.JFrame {
                 Dimy=9;
                 break;        
         }
-        llamar.datos();
         SeleccionJugadores nuevo=new SeleccionJugadores();
         nuevo.show();
         this.setVisible(false);

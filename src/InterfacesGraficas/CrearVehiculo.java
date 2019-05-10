@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
 import practicafinal.Jugador;
 import practicafinal.Vehiculo;
@@ -17,16 +16,11 @@ import practicafinal.Vehiculo;
  * @author Bladimir
  */
 public class CrearVehiculo extends javax.swing.JFrame {
-
-    /**
-     * Creates new form CrearVehiculo
-     */
-    // clases a usar en ensta clase
     
     private int cantidad=0;
     private String Nom;
     private String Tip;
-    
+    private Jugador enUso;
 
     public CrearVehiculo(String Nom, String Tip) {
         this.Nom = Nom;
@@ -49,8 +43,9 @@ public class CrearVehiculo extends javax.swing.JFrame {
         this.Tip = Tip;
     }
     
-    public CrearVehiculo() {
+    public CrearVehiculo(Jugador p) {
         initComponents();
+        enUso = p;
     }
 
     @SuppressWarnings("unchecked")
@@ -102,7 +97,7 @@ public class CrearVehiculo extends javax.swing.JFrame {
                 .addGap(80, 80, 80))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CREAR VEHICULO INICIALES");
 
         jButton1.setText("AGREGAR");
@@ -190,59 +185,77 @@ public class CrearVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-        ObjectInputStream leyendoFichero = null;
-        try {
-            // agrega vehiculo ala lista
-            
-            // Jugador vehiculos=new Jugador("as", "das");
-            //  vehiculos.nuevos();
-
-            //recuperar ultimo jugador creado para agregar los vehiculos
-            
-            File file = new File("Player");
-            int lista=file.list().length;
-            
-            leyendoFichero = new ObjectInputStream( 
-                    new FileInputStream(lista+".player") );
-            
-          Jugador recuperado = (Jugador) leyendoFichero.readObject();
-          
-            leyendoFichero.close();
-            
-            
-            
-            DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
-            model.addRow(new Object[]{NombreV.getText(),Combo.getSelectedItem().toString()});
-            Nom=NombreV.getText();
-            Tip=Combo.getSelectedItem().toString();
-            cantidad++;
-            Contador.setText(" "+cantidad+" ");
-            
-            
-            if (cantidad>=3){
-                //recuperado.addVehiculo(paraAgregar);
-                
-//                for (Object object : Tabla.getModel().get) {
-//                    
-//                }
-                jDialog1.setVisible(true);
-            }
-            
-            
-            
-        } catch (IOException ex) {
-            Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                leyendoFichero.close();
-            } catch (IOException ex) {
-                Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        Tip=Combo.getSelectedItem().toString();            
+        switch(Tip){
+            case "Tanque":
+            enUso.addVehiculo(new Vehiculo(Nom, Tip, 1, 0, 100, 10, true, 5, 20, 20) {
+                @Override
+                public void CrearVehiculo() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            });
+        break;
+        case "Avion":
+            enUso.addVehiculo(new Vehiculo(Nom, Tip, 1, 0, 100, 10, true, 5, 20, 20) {
+                   @Override
+                   public void CrearVehiculo() {
+                       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                   }
+               });
+                break;
+    }        
         
+//        ObjectInputStream leyendoFichero = null;
+//        try {
+//            // agrega vehiculo ala lista
+//            
+//            // Jugador vehiculos=new Jugador("as", "das");
+//            //  vehiculos.nuevos();
+//
+//            //recuperar ultimo jugador creado para agregar los vehiculos
+//            
+//            File file = new File("Player");
+//            int lista=file.list().length;
+//            leyendoFichero = new ObjectInputStream( 
+//            new FileInputStream(lista+".player") );
+//            
+//            Jugador recuperado = (Jugador) leyendoFichero.readObject();
+//          
+//            leyendoFichero.close();
+//            
+//            
+//            
+//            DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
+//            model.addRow(new Object[]{NombreV.getText(),Combo.getSelectedItem().toString()});
+//            Nom=NombreV.getText();
+//            Tip=Combo.getSelectedItem().toString();
+//            cantidad++;
+//            Contador.setText(" "+cantidad+" ");
+//            
+//            
+//            if (cantidad>=3){
+//               
+//                
+////                for (Object object : Tabla.getModel().get) {
+////                    
+////                }
+//                jDialog1.setVisible(true);
+//            }
+//            
+//            
+//            
+//        } catch (IOException ex) {
+//            Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            try {
+//                leyendoFichero.close();
+//            } catch (IOException ex) {
+//                Logger.getLogger(CrearVehiculo.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -254,9 +267,7 @@ public class CrearVehiculo extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Inicio ir=new Inicio();
-        ir.show();
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -289,7 +300,7 @@ public class CrearVehiculo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearVehiculo().setVisible(true);
+//                new CrearVehiculo().setVisible(true);
             }
         });
     }

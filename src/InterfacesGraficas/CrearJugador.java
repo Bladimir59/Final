@@ -1,9 +1,12 @@
 package InterfacesGraficas;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import practicafinal.Jugador;
 
 
@@ -15,6 +18,7 @@ public class CrearJugador extends javax.swing.JFrame{
 
     private String nombre;
     private String ide;
+    private ArrayList<Jugador> listado;
 
     public CrearJugador(String nombre, String ide) {
         this.nombre = nombre;
@@ -38,8 +42,9 @@ public class CrearJugador extends javax.swing.JFrame{
     }
 
     
-    public CrearJugador() {
+    public CrearJugador(ArrayList<Jugador> tmp) {
         initComponents();
+        listado = tmp;
     }
 
     /**
@@ -58,7 +63,7 @@ public class CrearJugador extends javax.swing.JFrame{
         Aceptar = new javax.swing.JButton();
         Regresar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CREAR JUGADOR");
 
         jLabel1.setText("Nombre");
@@ -129,38 +134,38 @@ public class CrearJugador extends javax.swing.JFrame{
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
         // IR AL MENU DE INICIO
-        Inicio nuevo=new Inicio();
-        nuevo.show();
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_RegresarActionPerformed
 
     
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        // boton para ir a la interface donde se crearan los trez vehiculos del jugador
-        // instancia x de jugador
-        // le mandas a crearvehiculo la instancia x
-        // le agregas los vehiculos a x desde Crearvehiculo
-        
         nombre=Texto1.getText();
         ide=Texto2.getText();
         Jugador enUso = new Jugador(nombre, ide);
-        
-        try{
-         FileOutputStream fos= new FileOutputStream(String.valueOf("Player"+File.separatorChar+enUso.getIdClave()+".player"));
-         ObjectOutputStream oos= new ObjectOutputStream(fos);
-         oos.writeObject(enUso);
-         oos.close();
-         fos.close();
-       }catch(IOException ioe){
-            System.out.println(ioe.getMessage());
-        }
-        
-        
-        
-        
-        CrearVehiculo nuevo=new CrearVehiculo();
-        nuevo.show();
+        listado.add(enUso);
+//        try{
+//         FileOutputStream fos= new FileOutputStream(String.valueOf("Player"+File.separatorChar+enUso.getIdClave()+".player"));
+//         ObjectOutputStream oos= new ObjectOutputStream(fos);
+//         oos.writeObject(enUso);
+//         oos.close();
+//         fos.close();
+//       }catch(IOException ioe){
+//            System.out.println(ioe.getMessage());
+//        }
+        CrearVehiculo nuevo=new CrearVehiculo(enUso);
         this.setVisible(false);
+        nuevo.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e){
+                dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e){
+                dispose();
+            }
+        });
+        
+        nuevo.setVisible(true);        
     }//GEN-LAST:event_AceptarActionPerformed
 
     /**
@@ -190,12 +195,12 @@ public class CrearJugador extends javax.swing.JFrame{
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CrearJugador().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

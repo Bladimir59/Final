@@ -1,5 +1,9 @@
 package InterfacesGraficas;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import practicafinal.Jugador;
+
 /**
  *
  * @author Bladimir
@@ -11,6 +15,9 @@ public class MiPerfil extends javax.swing.JFrame {
      */
     Inicio lista_de_jugadores=new Inicio();
     public MiPerfil() {
+        
+        lista_de_jugadores.getListaJugadores();
+        
         
     }
     

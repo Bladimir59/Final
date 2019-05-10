@@ -5,6 +5,8 @@
  */
 package InterfacesGraficas;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import practicafinal.Jugador;
@@ -23,6 +25,7 @@ public class Inicio extends javax.swing.JFrame {
     private String Ide;
     private ArrayList<Jugador> ListaJugadores;
     
+    
     public Inicio(ArrayList<Jugador> ListaJugadores) {
         this.ListaJugadores = ListaJugadores;
     }
@@ -36,14 +39,10 @@ public class Inicio extends javax.swing.JFrame {
     }
     
     
-    CrearJugador datos=new CrearJugador();
+    
     public Inicio() {
         initComponents();
-//        ListaJugadores=new ArrayList<>(); 
-//        // llenar de datos a la lista de jugadores
-//        ListaJugadores.add(new Jugador(datos.getNombre(), datos.getIde()));
-//        
-   
+        ListaJugadores=new ArrayList<Jugador>(); 
     }
 
     @SuppressWarnings("unchecked")
@@ -133,8 +132,20 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // BOTON PARA IR AL MENU DONDE SE CREA JUGADOR
-        CrearJugador nuevo=new CrearJugador();
-        nuevo.show();
+        CrearJugador nuevo=new CrearJugador(ListaJugadores);
+        this.setVisible(false);
+        nuevo.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e){
+                setVisible(true);
+            }
+            @Override
+            public void windowClosed(WindowEvent e){
+                setVisible(true);
+            }
+        });
+        
+        nuevo.setVisible(true);        
         //this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

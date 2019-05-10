@@ -11,57 +11,28 @@ import java.util.ArrayList;
 public class Jugador implements Serializable{
     private String Nombre;
     private String IDE;
-    private static int id=0;
-    private int idClave;
+    private int Nivel;
+    private int Oro;
+    private int Experiencia;
+    private int JuegosJugados;
+    private int ganados;
+    private int perdidos;
+    private int rendido;
     
-    ArrayList<Vehiculo> nuevoVehiculo=new ArrayList();
+    private ArrayList<Vehiculo> nuevoVehiculo;
+    private int UsarVehiculo;
     
-    CrearVehiculo entrada=new CrearVehiculo();
-
+    
     
     public Jugador(String Nombre, String IDE) {
         this.Nombre = Nombre;
         this.IDE = IDE;
-        id++;
-        idClave = id;
     }
 
-    public int getIdClave() {
-        return idClave;
-    }
-
-    public void setIdClave(int idClave) {
-        this.idClave = idClave;
-    }
     public void addVehiculo(Vehiculo paraAgregar){
         nuevoVehiculo.add(paraAgregar);
     }
     
-    public void nuevos(){
-        String nombre,tipo;
-        nombre=entrada.getNom();
-        tipo=entrada.getTip();
-        System.out.println(""+tipo+"");
-        switch("tipo"){
-            case "Avion":
-                nuevoVehiculo.add(new Avion(nombre, tipo, 0, 0, 0, 0, true, 0, 0, 0));
-                break;
-            case "Tanque":
-                nuevoVehiculo.add(new Tanque(nombre, tipo, 0, 0, 0, 0, true, 0, 0, 0));
-                break;
-        }
-    }
-
-    public  int getId() {
-        return id;
-    }
-
-    public  void setId(int id) {
-        Jugador.id = id;
-    }
-    
-
-
     public String getNombre() {
         return Nombre;
     }
@@ -77,6 +48,79 @@ public class Jugador implements Serializable{
     public void setIDE(String IDE) {
         this.IDE = IDE;
     }
+
+    public int getNivel() {
+        return Nivel;
+    }
+
+    public void setNivel(int Nivel) {
+        this.Nivel = Nivel;
+    }
+
+    public int getOro() {
+        return Oro;
+    }
+
+    public void setOro(int Oro) {
+        this.Oro = Oro;
+    }
+
+    public int getExperiencia() {
+        return Experiencia;
+    }
+
+    public void setExperiencia(int Experiencia) {
+        this.Experiencia = Experiencia;
+    }
+
+    public int getJuegosJugados() {
+        return JuegosJugados;
+    }
+
+    public void setJuegosJugados(int JuegosJugados) {
+        this.JuegosJugados = JuegosJugados;
+    }
+
+    public int getGanados() {
+        return ganados;
+    }
+
+    public void setGanados(int ganados) {
+        this.ganados = ganados;
+    }
+
+    public int getPerdidos() {
+        return perdidos;
+    }
+
+    public void setPerdidos(int perdidos) {
+        this.perdidos = perdidos;
+    }
+
+    public int getRendido() {
+        return rendido;
+    }
+
+    public void setRendido(int rendido) {
+        this.rendido = rendido;
+    }
+
+    public ArrayList<Vehiculo> getNuevoVehiculo() {
+        return nuevoVehiculo;
+    }
+
+    public void setNuevoVehiculo(ArrayList<Vehiculo> nuevoVehiculo) {
+        this.nuevoVehiculo = nuevoVehiculo;
+    }
+
+    public int getUsarVehiculo() {
+        return UsarVehiculo;
+    }
+
+    public void setUsarVehiculo(int UsarVehiculo) {
+        this.UsarVehiculo = UsarVehiculo;
+    }
+    
 
     @Override
     public String toString() {
