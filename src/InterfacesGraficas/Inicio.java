@@ -159,9 +159,20 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // al menu de perfiles
-        MiPerfil nuevo=new MiPerfil();
-        nuevo.show();
-        // this.setVisible(false);
+        Jugadores nuevo=new Jugadores();
+        this.setVisible(false);
+        nuevo.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e){
+                setVisible(true);
+            }
+            @Override
+            public void windowClosed(WindowEvent e){
+                setVisible(true);
+            }
+        });
+        
+        nuevo.setVisible(true);        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
