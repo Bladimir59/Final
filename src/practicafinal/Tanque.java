@@ -11,12 +11,13 @@ package practicafinal;
  */
 public class Tanque extends Vehiculo{
 
-    public Tanque(String Propietario, String Nombre, String Tipo, int Nivel, int experiencia, int HP, int PP, boolean Estado, int Ataque, int Defensa, int Punteria) {
-        super(Propietario, Nombre, Tipo, Nivel, experiencia, HP, PP, Estado, Ataque, Defensa, Punteria);
+    public Tanque(int experiencia) {
+        super(experiencia);
     }
-    
-    
 
+
+
+    
     @Override
     public void CrearVehiculo() {
         setNombre("Nombre");

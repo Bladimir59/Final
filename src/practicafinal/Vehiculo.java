@@ -20,19 +20,10 @@ public abstract class Vehiculo {
     
     public abstract void CrearVehiculo();
 
-    public Vehiculo(String Propietario, String Nombre, String Tipo, int Nivel, int experiencia, int HP, int PP, boolean Estado, int Ataque, int Defensa, int Punteria) {
-        this.Propietario = Propietario;
-        this.Nombre = Nombre;
-        this.Tipo = Tipo;
-        this.Nivel = Nivel;
+    public Vehiculo(int experiencia) {
         this.experiencia = experiencia;
-        this.HP = HP;
-        this.PP = PP;
-        this.Estado = Estado;
-        this.Ataque = Ataque;
-        this.Defensa = Defensa;
-        this.Punteria = Punteria;
     }
+
 
     public String getPropietario() {
         return Propietario;

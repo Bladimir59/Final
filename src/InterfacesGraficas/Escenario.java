@@ -22,7 +22,7 @@ public class Escenario extends javax.swing.JFrame {
     public Escenario() {
         
         initComponents();
-        Tipo="Avion";
+        Tipo="Tanque";
         x=6;
         y=4;
         nuevo = new MatrizDeBotones();

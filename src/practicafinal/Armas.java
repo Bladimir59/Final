@@ -9,12 +9,15 @@ public class Armas {
     private int Punteria;
     private int Ataque;
     private String Vehiculo;
+    private int costo;
 
-    public Armas(int Punteria, int Ataque, String Vehiculo) {
+    public Armas(int Punteria, int Ataque, String Vehiculo, int costo) {
         this.Punteria = Punteria;
         this.Ataque = Ataque;
         this.Vehiculo = Vehiculo;
+        this.costo = costo;
     }
+
 
     public int getPunteria() {
         return Punteria;
@@ -39,6 +42,15 @@ public class Armas {
     public void setVehiculo(String Vehiculo) {
         this.Vehiculo = Vehiculo;
     }
+
+    public int getCosto() {
+        return costo;
+    }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
+    }
+    
     
     
 }
