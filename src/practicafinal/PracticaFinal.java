@@ -1,6 +1,6 @@
 package practicafinal;
 
-import InterfacesGraficas.Inicio;
+import InterfacesGraficas.Menu;
 import java.io.File;
 
 /**
@@ -15,9 +15,9 @@ public class PracticaFinal {
             carpeta.mkdir();
             
         }
-        Inicio nuevo=new Inicio();
-        nuevo.show();
         
+        Menu ir=new Menu();               
+        ir.show(true);
         
         
     }

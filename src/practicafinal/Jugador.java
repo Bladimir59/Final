@@ -1,6 +1,5 @@
 package practicafinal;
 
-import InterfacesGraficas.CrearVehiculo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -28,7 +27,7 @@ public class Jugador implements Serializable{
         this.Nombre = Nombre;
         this.IDE = IDE;
     }
-
+    
     public void addVehiculo(Vehiculo paraAgregar){
         nuevoVehiculo.add(paraAgregar);
     }

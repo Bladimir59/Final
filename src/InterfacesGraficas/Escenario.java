@@ -19,7 +19,6 @@ public class Escenario extends javax.swing.JFrame {
     private int x;
     private int y;
     private String Tipo;
-    TipoDeBatalla entrada=new TipoDeBatalla();
     public Escenario() {
         
         initComponents();
