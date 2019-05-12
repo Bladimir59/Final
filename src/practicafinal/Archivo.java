@@ -1,6 +1,5 @@
 package practicafinal;
 
-import InterfacesGraficas.Escenario;
 import java.util.ArrayList;
 
 /**
@@ -67,10 +66,10 @@ public class Archivo {
         ListadoArmas.add(new Armas(punteria, ataque, nameVehiculo, precio));
     }    
     // arrlego de lista de battallas
-    ArrayList<Escenario> ListadoBatallas=new ArrayList<>();
-    public void GuardarPartida(){
-        ListadoBatallas.add(new Escenario());
-    }
+//    ArrayList<Escenario> ListadoBatallas=new ArrayList<>();
+//    public void GuardarPartida(){
+//        ListadoBatallas.add(new Escenario());
+//    }
 
     
 }
