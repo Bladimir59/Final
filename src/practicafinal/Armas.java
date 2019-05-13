@@ -1,21 +1,32 @@
 
 package practicafinal;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Bladimir
  */
-public class Armas {
+public class Armas implements Serializable{
     private int Punteria;
     private int Ataque;
     private String Vehiculo;
     private int costo;
+    private String Nombre;
 
-    public Armas(int Punteria, int Ataque, String Vehiculo, int costo) {
+    public Armas(int Punteria, int Ataque,int costo,String Nombre) {
         this.Punteria = Punteria;
         this.Ataque = Ataque;
-        this.Vehiculo = Vehiculo;
         this.costo = costo;
+        this.Nombre=Nombre;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
 

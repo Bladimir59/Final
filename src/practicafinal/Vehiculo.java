@@ -1,10 +1,12 @@
 package practicafinal;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Bladimir 
  */
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Serializable{
     private String Propietario;
     private String Nombre;
     private String Tipo;
