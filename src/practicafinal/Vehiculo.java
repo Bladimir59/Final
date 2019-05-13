@@ -18,7 +18,7 @@ public abstract class Vehiculo implements Serializable{
     private int Ataque;
     private int Defensa;
     private int Punteria;
-    
+    private int EnemigoDestruido;
     
     public abstract void CrearVehiculo();
 
@@ -116,4 +116,13 @@ public abstract class Vehiculo implements Serializable{
     public void setPunteria(int Punteria) {
         this.Punteria = Punteria;
     }
+
+    public int getEnemigoDestruido() {
+        return EnemigoDestruido;
+    }
+
+    public void setEnemigoDestruido(int EnemigoDestruido) {
+        this.EnemigoDestruido = EnemigoDestruido;
+    }
+    
 }

@@ -1,10 +1,15 @@
 package practicafinal;
 
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 /**
@@ -64,6 +69,7 @@ public class Archivo {
         esAvion.setPP(50);
         esAvion.setPropietario(Dueño);
         esAvion.setPunteria(50);
+        esAvion.setEnemigoDestruido(0);
         ListadoVehiculos.add(esAvion);
     }   
     public void AgregarVehiculoTanque(String Nombre,String Tipo,String Dueño){
@@ -78,6 +84,7 @@ public class Archivo {
         esTanque.setPP(50);
         esTanque.setPropietario(Dueño);
         esTanque.setPunteria(10);
+        esTanque.setEnemigoDestruido(0);
         ListadoVehiculos.add(esTanque);
     }
     // arreglo de lista de armas
@@ -120,4 +127,35 @@ public class Archivo {
         } catch (Exception e) {
         }
     }
+
+    public void setListadoJugadore(ArrayList<Jugador> ListadoJugadore) {
+        this.ListadoJugadore = ListadoJugadore;
+    }
+
+    public void setListadoVehiculos(ArrayList<Vehiculo> ListadoVehiculos) {
+        this.ListadoVehiculos = ListadoVehiculos;
+    }
+    public void escribir2(String linea){
+        Scanner entrada=new Scanner(System.in);
+        //éste método permite escribir si no existe y actualizar (agregar) si existe
+	//  se crea pw como un nuevo escritor, que utiliza una bufferización del archivo, el "true" activa la edición y se coloca al final  
+	try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("prueba.html", true)))) {
+            System.out.println("<HTML>");
+            System.out.println("<TITLE>Título del documento HTML</TITLE>");
+            System.out.println("</HTML>");
+            System.out.println("<BODY>");
+            System.out.println("<ol>");
+            System.out.println("<li>");
+            
+            pw.println(linea);
+            
+            System.out.println("</li>");
+            System.out.println("/<ol>");
+            System.out.println("</BODY>");
+            System.out.println("/<HTML>");
+	}catch (IOException e) {
+            System.err.println(e);
+      	}		
+	}
+
 }

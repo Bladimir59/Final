@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import jdk.nashorn.internal.ir.BreakNode;
 
 /**
  *
@@ -231,37 +232,44 @@ public class MatrizDeBotones implements Serializable{
         MatrizBotones[posxe2][posye2].setIcon(new ImageIcon(getClass().getResource("/Imagenes/M2.jpg")));
         MatrizBotones[posxe3][posye3].setIcon(new ImageIcon(getClass().getResource("/Imagenes/M3.png")));
     }
-    int vida1=200,vida2=200,vida3=200;
-    public void Ataque(int Ataque){
-        int porcentage,daño;
+    int vida1=20,vida2=20,vida3=20,caso=1;
+    public String Ataque(int Ataque){
+        int porcentage,daño=0;
         porcentage=(int)(Math.random()*(100)+1);
-        daño=Ataque*(porcentage/100);
+        System.out.println(""+porcentage);
+        daño=Ataque+(porcentage);
+        System.out.println(""+daño);
+        switch(caso){
+            case 1:
+                vida1=vida1-daño;
+                System.out.println("vida"+vida1);
+                break;
+            case 2:
+                vida2=vida2-daño;
+                System.out.println("vida"+vida2);
+                break;
+            case 3:
+                vida3=vida3-daño;
+                System.out.println("vida"+vida3);
+                break;
+        }
+        if(vida1<0){
+            MatrizBotones[posxe1][posye1].setIcon(null); 
+            caso=2;
+        }
+        if(vida2<0){
+            MatrizBotones[posxe2][posye2].setIcon(null);
+            caso=3;
+        }
+        if (vida3<0) {
+            MatrizBotones[posxe3][posye3].setIcon(null);
+        }
         
-        if((posxe1==PAx) && (posye1==PAy)){
-            vida1=vida1-daño;
-            System.out.println(""+vida1);
-            if (vida1<1){
-                MatrizBotones[posxe1][posye1].setIcon(null);
-            }
-        }else{
-            if ((posxe2==PAx) && (posye2==PAy)) {
-                if (vida2<1){
-                MatrizBotones[posxe2][posye2].setIcon(null);
-                System.out.println(""+vida2);
-                }
-            }else{
-                if ((posxe3==PAx) && (posye3==PAy)) {
-                    if (vida3<1){
-                        MatrizBotones[posxe3][posye3].setIcon(null);
-                        System.out.println(""+vida3);
-                    }
-                }
-            }
-                
-        }
         if ((vida1<0)&&(vida2<0)&&(vida3<0)){
-            
+            caso=0;
+            return "ganado";
         }
+        return "sigue";
     }
     
 }
